@@ -1,0 +1,14 @@
+.post-form .form-control {
+  margin: 20px 0;
+}
+.post-form label {
+  margin-right: 20px;
+  font-weight: bold;
+}
+.post-form input {
+  width: 80%;
+  padding: 10px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
