@@ -11,10 +11,11 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
+  text-align: center;
 }
 .title {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .postItem {
   flex-basis: 300px;
