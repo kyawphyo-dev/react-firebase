@@ -1,7 +1,13 @@
 import "./App.css";
+import TripList from "./components/TripList/index.js";
 
 function App() {
-  return <h1>Hello</h1>;
+  return (
+    <>
+      <h1> Available Tour</h1>
+      <TripList />
+    </>
+  );
 }
 
 export default App;

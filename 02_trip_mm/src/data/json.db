@@ -2,19 +2,23 @@
     "trips" : [
         {
             "name": "Phuket Tour",
-            "fee": 1200
+            "fee": 1200,
+            "id": 1
         },
         {
             "name": "Bankok Tour",
             "fee": 2500
+            "id": 2
         },
         {
             "name": "Chin Mai Tour",
-            "fee": 3000
+            "fee": 3000,
+            "id": 3
         },
         {
             "name": "Pattya Tour",
-            "fee": 2000
+            "fee": 2000,
+            "id": 4
         }
     ]
 }
