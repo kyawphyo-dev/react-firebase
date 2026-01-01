@@ -3,22 +3,32 @@
         {
             "name": "Phuket Tour",
             "fee": 1200,
-            "id": 1
+            "id": 1,
+            "location": "Thailand"
         },
         {
-            "name": "Bankok Tour",
-            "fee": 2500
-            "id": 2
+            "name": "Bangkok Tour",
+            "fee": 2500,
+            "id": 2,
+            "location": "Thailand"
         },
         {
             "name": "Chin Mai Tour",
             "fee": 3000,
-            "id": 3
+            "id": 3,
+            "location": "Thailand"
         },
         {
             "name": "Pattya Tour",
             "fee": 2000,
-            "id": 4
+            "id": 4,
+            "location": "Thailand"
+        },
+        {
+            "name": "Kalaw",
+            "fee": 3700,
+            "id" : 5,
+            "location": "Myanmar"
         }
     ]
 }

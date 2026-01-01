@@ -1,14 +1,36 @@
 import React, { useEffect, useState } from "react";
 
 export default function TripList() {
+  let [url, setUrl] = useState("http://localhost:3001/trips");
   let [trips, setTrips] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3001/trips")
+    fetch(url)
       .then((res) => res.json())
-      .then((data) => setTrips(data));
-  }, []);
+      .then((data) => {
+        setTrips(data);
+      });
+  }, [url]);
   return (
     <div>
+      <button
+        type="button"
+        onClick={() => setUrl("http://localhost:3001/trips")}
+      >
+        All Trips
+      </button>
+      <button
+        type="button"
+        onClick={() => setUrl("http://localhost:3001/trips?location=Myanmar")}
+      >
+        Trips in Myanmar
+      </button>
+      <button
+        type="button"
+        onClick={() => setUrl("http://localhost:3001/trips?location=Thailand")}
+      >
+        Trips in Thailand
+      </button>
+
       {trips.map((trip) => (
         <div
           key={trip.id}
