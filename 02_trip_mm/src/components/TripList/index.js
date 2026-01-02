@@ -1,47 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import useFetch from "../../hooks/useFetch";
+import "./index.css";
 
 export default function TripList() {
   let [url, setUrl] = useState("http://localhost:3001/trips");
-  let [trips, setTrips] = useState([]);
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setTrips(data);
-      });
-  }, [url]);
-  return (
-    <div>
-      <button
-        type="button"
-        onClick={() => setUrl("http://localhost:3001/trips")}
-      >
-        All Trips
-      </button>
-      <button
-        type="button"
-        onClick={() => setUrl("http://localhost:3001/trips?location=Myanmar")}
-      >
-        Trips in Myanmar
-      </button>
-      <button
-        type="button"
-        onClick={() => setUrl("http://localhost:3001/trips?location=Thailand")}
-      >
-        Trips in Thailand
-      </button>
+  let { data: trips, loading, error } = useFetch(url);
 
-      {trips.map((trip) => (
-        <div
-          key={trip.id}
-          style={{ border: "1px solid black", margin: "10px", padding: "10px" }}
-        >
-          <h2>{trip.name}</h2>
-          <p>Price: ${trip.price}</p>
-          <p>Duration: {trip.duration} days</p>
-          <p>{trip.description}</p>
+  return (
+    <div className="trip-list">
+      {error && <p className="error">{error}</p>}
+      {!error && (
+        <div className="trip-filters">
+          {loading && <p className="loading">Loading trips...</p>}
+          <button onClick={() => setUrl("http://localhost:3001/trips")}>
+            All Trips
+          </button>
+
+          <button
+            onClick={() =>
+              setUrl("http://localhost:3001/trips?location=Myanmar")
+            }
+          >
+            Trips in Myanmar
+          </button>
+
+          <button
+            onClick={() =>
+              setUrl("http://localhost:3001/trips?location=Thailand")
+            }
+          >
+            Trips in Thailand
+          </button>
         </div>
-      ))}
+      )}
+
+      {!error && (
+        <div className="trip-grid">
+          {trips &&
+            trips.map((trip) => (
+              <div className="trip-card" key={trip.id}>
+                <h2>{trip.name}</h2>
+                <p>Price: {trip.fee} THB</p>
+              </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 }
