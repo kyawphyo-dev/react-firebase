@@ -4,8 +4,10 @@ function useFetch(url) {
   let [loading, setLoading] = useState(false);
   let [error, setError] = useState(null);
   useEffect(() => {
+    let abortController = new AbortController();
+    let signal = abortController.signal;
     setLoading(true);
-    fetch(url)
+    fetch(url, { signal })
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to fetch data");
@@ -20,6 +22,9 @@ function useFetch(url) {
       .catch((err) => {
         setError(err.message);
       });
+    return () => {
+      abortController.abort();
+    };
   }, [url]);
   return { data, loading, error };
 }
